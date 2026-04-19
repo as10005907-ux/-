@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>2026 완도·청산도 섬패킹 v5.3</title>
+<style>
+:root{--pri:#1A3C6E;--acc:#2E75B6;--sun:#F59E0B;--red:#DC2626}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;background:#F0F4F8;color:#333;line-height:1.65;overflow-x:hidden}
+.page{display:none;min-height:100vh;padding:12px 12px 80px;max-width:720px;margin:0 auto}
+.page.active{display:block}
+.hero{background:linear-gradient(135deg,var(--pri),var(--acc));color:#fff;border-radius:16px;padding:24px 16px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.08);border-radius:50%}
+.hero h1{font-size:20px}.hero .sub{font-size:13px;opacity:.85;margin-top:4px}.hero .ver{font-size:10px;opacity:.5;margin-top:8px}
+.nav-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.nav-card{background:#fff;border-radius:12px;padding:14px 12px;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;transition:transform .15s;position:relative}
+.nav-card:active{transform:scale(.97)}
+.nav-card .dn{font-size:11px;font-weight:bold;color:#fff;display:inline-block;padding:2px 8px;border-radius:8px;margin-bottom:6px}
+.d1{background:#6366F1}.d2{background:#0891B2}.d3{background:#16A34A}.d4{background:#EA580C}.d5{background:#7C3AED}
+.nav-card h3{font-size:13px;color:var(--pri);margin-bottom:4px}.nav-card p{font-size:11px;color:#666;line-height:1.5}
+.nav-card .ar{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#ccc;font-size:18px}
+.nav-card.full{grid-column:1/-1}
+.back{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--acc);font-weight:bold;padding:8px 0;cursor:pointer;border:none;background:none}
+.dt{font-size:18px;font-weight:bold;color:var(--pri);margin:8px 0 4px;padding-bottom:8px;border-bottom:2px solid var(--acc)}
+.cd{background:#fff;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.cd h3{font-size:14px;color:var(--acc);margin-bottom:6px;padding-left:6px;border-left:3px solid var(--acc)}
+.cd h4{font-size:13px;color:#555;margin:8px 0 4px;font-weight:bold}
+ul{padding-left:16px;margin:4px 0}li{font-size:12.5px;margin-bottom:3px}
+.tip{font-size:11.5px;color:#888;font-style:italic;margin:4px 0 4px 2px}
+.stay{color:var(--acc);font-weight:bold;font-size:13px;margin:8px 0 2px}
+.hl{background:#FFF8E1;border-left:4px solid var(--sun);padding:10px 12px;border-radius:8px;margin:8px 0;font-size:12px}
+.al{background:#FEF2F2;border-left:4px solid var(--red);padding:10px 12px;border-radius:8px;margin:8px 0;font-size:12px}
+.tg{display:inline-block;background:#E3F2FD;color:#1565C0;padding:1px 7px;border-radius:8px;font-size:10.5px;margin:1px}
+table{width:100%;border-collapse:collapse;font-size:11.5px;margin:6px 0}
+th{background:var(--acc);color:#fff;padding:5px 3px;text-align:center}
+td{border:1px solid #e0e0e0;padding:4px;text-align:center}td.l{text-align:left}
+.bt{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e0e0;display:flex;justify-content:center;z-index:100;padding:6px 0 env(safe-area-inset-bottom,8px)}
+.tb{flex:1;max-width:80px;display:flex;flex-direction:column;align-items:center;gap:2px;border:none;background:none;cursor:pointer;padding:4px 0;color:#999;font-size:10px}
+.tb.on{color:var(--acc)}.tb .ti{font-size:18px}
+</style>
+</head>
+<body>
+<!-- OVERVIEW -->
+<div class="page active" id="pg-overview">
+<div class="hero"><h1>🏕 2026 완도·청산도 4박 5일</h1><div class="sub">섬패킹 캠핑투어 계획서</div><div class="sub" style="margin-top:6px">📅 4/30(목) ~ 5/4(월)</div><div class="ver">v5.3 최종판</div></div>
+<div class="nav-grid">
+<div class="nav-card" onclick="go('d1')"><div class="dn d1">Day 1</div><h3>4/30 목</h3><p>목포→완도→구계등<br>🛒식재료 · 🍜중식<br>📍청해진유적</p><span class="ar">›</span></div>
+<div class="nav-card" onclick="go('d2')"><div class="dn d2">Day 2</div><h3>5/01 금</h3><p>⚔충무사 · 🚗약산도<br>🏛타워 · 맛집<br>🌅명사십리 일몰</p><span class="ar">›</span></div>
+<div class="nav-card" onclick="go('d3')"><div class="dn d3">Day 3</div><h3>5/02 토</h3><p>⛴청산도 섬패킹<br>🚶슬로길 역방향<br>🌅지리해변 일몰</p><span class="ar">›</span></div>
+<div class="nav-card" onclick="go('d4')"><div class="dn d4">Day 4</div><h3>5/03 일</h3><p>⛴청산도 출도<br>🔥캠프파이어<br>🥩바베큐 마지막 밤</p><span class="ar">›</span></div>
+<div class="nav-card" onclick="go('d5')"><div class="dn d5">Day 5</div><h3>5/04 월</h3><p>⛩대흥사(유네스코)<br>🍜목포역 맛집<br>🚆ITX 15:57→수원</p><span class="ar">›</span></div>
+<div class="nav-card full" onclick="go('info')" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE)"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px">📋</span><div><h3>예약 · 배편 · 장비 · 맛집 · 연락처</h3><p>야영장 예약 | 배편 시간표 | 일출일몰 | 장비 리스트 | 맛집 | 비상연락처</p></div></div><span class="ar">›</span></div>
+</div>
+</div>
+
+<!-- DAY 1 -->
+<div class="page" id="pg-d1">
+<button class="back" onclick="go('overview')">‹ 전체 일정</button>
+<div class="dt">📅 Day 1 | 4/30(목) 목포 → 완도 → 구계등</div>
+<div class="cd"><h3>🚆 12:48 목포역 도착</h3><ul><li>렌터카 인수 → 완도 방향 이동 (약 1시간 40분)</li></ul></div>
+<div class="cd"><h3>🍜 동선상 중식 (13:00~14:00)</h3><p class="tip">목포→해남→완도 경로 중 택 1</p>
+<h4>① 해남 신창손순대국밥</h4><ul><li>진한 순대국밥 · 모둠순대 푸짐 (해남읍, 목포서 50분)</li></ul>
+<h4>② 해남 중국관 (북평면)</h4><ul><li>삼선짬뽕 · 간짜장 · 등심탕수육 현지인 맛집</li></ul>
+<h4>③ 완도 해궁횟집</h4><ul><li>전복뚝배기 · 해물물회 (완도항 맞은편, 아침부터)</li></ul></div>
+<div class="cd"><h3>🛒 식재료 보급</h3><ul><li>완도읍 하나로마트 – 4박 5일치 전체 확보</li><li><b>청산도 섬패킹용</b> 미리 분리 · 포장</li></ul><p class="tip">※ 청산도 섬 내 구입처 제한 → 반드시 사전 준비</p></div>
+<div class="cd"><h3>📍 장도 청해진 유적 (구계등에서 차 10분)</h3><ul><li>사적 308호 – 해상왕 장보고 828년 청해진 본영</li><li>장도목교 → 성터 · 우물터 산책</li><li>장보고기념관 (무료) | 체류 40~60분</li></ul></div>
+<div class="cd"><h3>🏕 구계등 A11 입실 (14:00~)</h3><ul><li>세팅 → 몽돌해변 산책 → 일몰 ≈19:12</li></ul><div class="stay">숙박: 구계등야영장 A11 (1/3박)</div></div>
+</div>
+
+<!-- DAY 2 -->
+<div class="page" id="pg-d2">
+<button class="back" onclick="go('overview')">‹ 전체 일정</button>
+<div class="dt">📅 Day 2 | 5/01(금) 종일 탐방 (A11 연박)</div>
+<p class="tip">텐트 그대로 두고 차량으로 종일 탐방</p>
+<div class="cd"><h3>🚗 오전: 섬연결 드라이브 (08:30 출발)</h3><ul><li>신지대교→장보고대교→고금도 진입</li></ul></div>
+<div class="al"><b style="color:#8B0000">⚔ 고금도 묘당도 이충무공 유적 (사적 114호)</b><br><span style="font-size:11.5px">
+<b style="color:#8B0000">덕수이씨 후손으로서 반드시 참배해야 할 성지</b><br><br>
+• 1598년 충무공 수군 8,000명과 고금도 본영 설치 (마지막 통제영)<br>
+• 7개월간 둔전·어염으로 수군 재건, 한산도 10배 위용<br>
+• 명 수군도독 진린과 조·명 연합전선 구축<br>
+• 1598.11.19 노량해전 순국(54세) — "나의 죽음을 알리지 말라"<br>
+• 유해 월송대 88일 임시 안장 → 1599 아산 운구<br><br>
+<b>유적:</b> 충무사 · 월송대 · 하마비 · 관왕묘비 · 이순신기념관 · 전진도첩<br>
+<b>덕수이씨 12세손</b> — 정조 어제신도비 (유일한 사례)</span></div>
+<div class="cd"><h3>🚗 → 약산도 가사동백숲해변</h3><ul><li>고금대교→약산연도교 (15분)</li><li>동백숲 산책, 다도해 조망, 노지 답사 | 40분</li></ul></div>
+<div class="cd"><h3>🍜 점심 (11:30~12:30)</h3><ul><li><b>명품해물탕찜</b> (백종원 3대천왕)</li><li><b>개성순두부</b> 돌솥밥 / <b>빙그레</b> 생선구이</li></ul></div>
+<div class="cd"><h3>🏛 오후 명승지</h3>
+<h4>① 완도타워 (13:00~13:40)</h4><ul><li>76m, 다도해 파노라마</li></ul>
+<h4>② 완도수목원 (14:00~15:00)</h4><ul><li>난대림 · 아열대 온실</li></ul>
+<h4>③ 명사십리 (15:30~17:30)</h4><ul><li>블루플래그 3.8km 백사장 · 일몰 ≈19:13</li></ul></div>
+<div class="cd"><h3>🌿 추가 자연명소 (선택)</h3><ul>
+<li><span class="tg">A</span> 강진 가우도 출렁다리+짚트랙</li>
+<li><span class="tg">B</span> 완도 해양치유센터</li>
+<li><span class="tg">C</span> 상황봉 트레킹(644m)</li>
+<li><span class="tg">D</span> 해남 땅끝전망대</li>
+<li><span class="tg">E</span> 어촌민속전시관+해조류센터</li></ul></div>
+<div class="cd"><h3>🍽 저녁</h3><ul><li><b>완도회센터</b> / <b>대성회식당</b> / <b>모래뜰</b></li></ul><div class="stay">숙박: 구계등 A11 (2/3박)</div></div>
+</div>
+
+<!-- DAY 3 -->
+<div class="page" id="pg-d3">
+<button class="back" onclick="go('overview')">‹ 전체 일정</button>
+<div class="dt">📅 Day 3 | 5/02(토) 청산도 섬패킹</div>
+<div class="cd"><h3>⛴ 입도</h3><ul><li>A11 철수 → 완도항 → <b>08:30 2항차</b></li><li>청산 ≈09:20 → 경로(65↑) 7,100원</li></ul></div>
+<div class="cd"><h3>🚌 지리해변 직행 (방법 3)</h3><ul><li>순환버스로 장비 싣고 직행 (10분, 1,000원)</li><li>해송숲 우측 초입 텐트·쉘터 세팅</li></ul></div>
+<div class="cd"><h3>🚶 베이스캠프 후 역방향 탐방</h3><ul>
+<li>지리해변 → 고래지미 → 서편제촬영지 → 당리 → 도청항 (90분)</li>
+<li>도청항: 미로길(20분) + 어판장 + 서편제주막 점심</li>
+<li>버스/택시로 지리해변 귀환</li>
+<li>오후: 범바위 전망대 or 해변 힐링</li></ul></div>
+<div class="hl"><b>🌅 버스정류장 → 명당 도보거리</b><br>
+<table><tr><th>명당</th><th>하차</th><th>도보</th></tr>
+<tr><td class="l">🌅 지리청송해변(일몰)</td><td>지리마을</td><td><b>5~7분</b></td></tr>
+<tr><td class="l">🌅 고래지미(일몰)</td><td>-</td><td>지리서 15분↑</td></tr>
+<tr><td class="l">🌄 진산리 갯돌(일출)</td><td>진산리</td><td><b>5분</b></td></tr>
+<tr><td class="l">🌄 신흥리 풀등(일출)</td><td>신흥리</td><td><b>5분</b></td></tr>
+<tr><td class="l">⛰ 범바위 전망대</td><td>청계리</td><td>30분등산</td></tr></table>
+<p class="tip">지리→진산리 도보 40분(2.5km) → 이튿날 새벽 일출 산책<br>5월 초 새벽 10~13도 → 바람막이·핫팩</p></div>
+<div class="cd"><h3>🛒 청산도 식재료 (도청항 탐방 겸)</h3><ul><li>어판장 · 선창가 수산물 · 편의점 · 서편제주막</li></ul><p class="tip">식재료는 완도읍에서 사전 포장 필수!</p></div>
+<div class="cd"><h3>🏕 섬패킹 사이트</h3>
+<h4>① 지리청송해변 (일몰·추천1순위)</h4><ul><li>해송숲 그늘 야영 · 일몰 포인트</li></ul>
+<h4>② 진산리 갯돌해변 (일출 명당)</h4><ul><li>동쪽, 방파제 바람차단, 호젓</li></ul>
+<div class="stay">숙박: 지리청송해변 (섬패킹)</div></div>
+</div>
+
+<!-- DAY 4 -->
+<div class="page" id="pg-d4">
+<button class="back" onclick="go('overview')">‹ 전체 일정</button>
+<div class="dt">📅 Day 4 | 5/03(일) 출도 → 캠프파이어</div>
+<div class="cd"><h3>⛴ 출도</h3><ul><li>청산 09:00 (2항차) → 완도항 ≈09:50</li><li>차량 회수</li></ul></div>
+<div class="cd"><h3>🍜 중식 (11:00~12:00) 완도읍</h3><ul>
+<li><b>해궁횟집</b> 전복뚝배기 / <b>개성순두부</b> 돌솥밥 / <b>빙그레</b> 생선구이</li>
+<li>🛒 바베큐 식재료 구입 (고기·채소·숯)</li></ul></div>
+<div class="cd" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5)">
+<h3>🔥 캠프파이어 & 바베큐</h3><ul>
+<li>A3 입실 (14:00~) → 세팅</li>
+<li>몽돌해변 산책</li>
+<li>🌅 일몰 ≈19:15</li>
+<li>🥩 화로대 숯불 바베큐</li>
+<li>🔥 캠프파이어 + 몽돌 파도소리</li>
+<li>💡 랜턴+삼각대 → 4박 5일 마무리</li></ul>
+<p class="tip">소등제 22:00</p>
+<div class="stay">숙박: 구계등 A3</div></div>
+</div>
+
+<!-- DAY 5 -->
+<div class="page" id="pg-d5">
+<button class="back" onclick="go('overview')">‹ 전체 일정</button>
+<div class="dt">📅 Day 5 | 5/04(월) 대흥사 → 목포</div>
+<p class="tip">ITX 1406 목포 15:57 | 렌터카 반납 14:00</p>
+<div class="cd"><h3>⏰ 타임라인</h3>
+<table><tr><th>시각</th><th>구간</th><th>소요</th></tr>
+<tr><td>07:30</td><td class="l">A3 철수</td><td>-</td></tr>
+<tr><td>~08:50</td><td class="l">→ 대흥사</td><td>1h20m</td></tr>
+<tr><td>08:50~11:00</td><td class="l">⛩ 대흥사 탐방</td><td>≈2h</td></tr>
+<tr><td>~12:00</td><td class="l">→ 목포역</td><td>≈50m</td></tr>
+<tr><td>12:00~13:30</td><td class="l">🍜 점심</td><td>1.5h</td></tr>
+<tr><td>~14:00</td><td class="l">렌터카 반납</td><td>-</td></tr>
+<tr><td><b>15:57</b></td><td class="l"><b>🚆 ITX 탑승</b></td><td>→19:55</td></tr></table></div>
+<div class="cd"><h3>⛩ 대흥사</h3><ul><li>유네스코 '산사, 한국의 산지승원'</li><li>숲길+금당천 계곡+사찰 | ≈2시간</li><li>표충사(정조 친필) · 초의선사 동상</li></ul><p class="tip">진입로 싱그릿나무 숲길이 특히 아름다움</p></div>
+<div class="cd"><h3>🍜 목포역 인근 맛집</h3>
+<h4>중화루 (역 도보5분)</h4><ul><li>1949년, 목포식 '중깐'+탕수육</li><li>⚠ 월요일 휴무! (5/04 확인 필수)</li></ul>
+<h4>영암식당 (역 도보3분)</h4><ul><li>70년 전통 떡갈비 정식, 남도 반찬</li></ul>
+<h4>백성식당</h4><ul><li>남도식 백반, 제철 반찬 10여 가지</li></ul>
+<h4>장터식당</h4><ul><li>꽃게살비빔밥 + 병어찜</li></ul>
+<h4>씨엘비베이커리</h4><ul><li>새우바게트 · 크림치즈바게트 🥖 (기차간식)</li></ul></div>
+</div>
+
+<!-- INFO -->
+<div class="page" id="pg-info">
+<button class="back" onclick="go('overview')">‹ 전체 일정</button>
+<div class="dt">📋 종합 정보</div>
+<div class="cd"><h3>✅ 야영장 예약 (결제완료)</h3>
+<table><tr><th>일자</th><th>영지</th><th>금액</th></tr>
+<tr><td>4/30</td><td>A11</td><td>16,000</td></tr>
+<tr><td>5/01</td><td>A11</td><td>21,000</td></tr>
+<tr><td>5/03</td><td>A3</td><td>16,000</td></tr></table>
+<p style="font-size:11px">합계 53,000원 | 5/02 청산도 섬패킹</p></div>
+
+<div class="cd"><h3>⛴ 청산도 배편</h3>
+<table><tr><th>항차</th><th>완도→청산</th><th>청산→완도</th></tr>
+<tr><td>1</td><td>07:00</td><td>06:50</td></tr>
+<tr><td>2</td><td><b>08:30</b></td><td><b>09:00</b></td></tr>
+<tr><td>3</td><td>11:00</td><td>11:30</td></tr>
+<tr><td>4</td><td>13:00</td><td>13:00</td></tr>
+<tr><td>5</td><td>14:30</td><td>15:00</td></tr>
+<tr><td>6</td><td>17:30</td><td>17:30</td></tr></table>
+<p class="tip">대인 8,700원 / 경로(65↑) 7,100원<br>출항 일주일 전 예약사이트 오픈</p></div>
+
+<div class="cd"><h3>🌅 일출·일몰</h3>
+<table><tr><th>일자</th><th>출</th><th>몰</th><th>포인트</th></tr>
+<tr><td>4/30</td><td>05:41</td><td>19:12</td><td>구계등</td></tr>
+<tr><td>5/01</td><td>05:40</td><td>19:13</td><td>명사십리</td></tr>
+<tr><td>5/02</td><td>05:39</td><td>19:14</td><td>지리해변</td></tr>
+<tr><td>5/03</td><td>05:38</td><td>19:15</td><td>구계등</td></tr></table></div>
+
+<div class="cd"><h3>🎒 섬패킹 장비</h3><div style="font-size:12px;columns:2;column-gap:12px">
+<b>거주</b><br>텐트·쉘터/타프<br>매트리스·침낭(3계절)<br>전기담요<br><br>
+<b>취사</b><br>버너+가스·테이블<br>식기(코펠,컵,수저)<br>화로대<br><br>
+<b>전자</b><br>랜턴+삼각대<br>보조배터리·드론<br>액션캠<br><br>
+<b>기타</b><br>바람막이·핫팩<br>쓰레기봉투<br>간이화장실·릴선30m</div></div>
+
+<div class="cd"><h3>🍜 완도 맛집</h3>
+<table><tr><th>식당</th><th>메뉴</th><th>비고</th></tr>
+<tr><td class="l"><b>명품해물탕찜</b></td><td class="l">전복 해물탕/찜</td><td>3대천왕</td></tr>
+<tr><td class="l"><b>대성회식당</b></td><td class="l">전복 풀코스</td><td>코스유명</td></tr>
+<tr><td class="l"><b>해궁횟집</b></td><td class="l">전복뚝배기·물회</td><td>아침영업</td></tr>
+<tr><td class="l"><b>개성순두부</b></td><td class="l">순두부+돌솥밥</td><td>현지인</td></tr>
+<tr><td class="l"><b>빙그레식당</b></td><td class="l">생선구이·갯국</td><td>별미</td></tr>
+<tr><td class="l"><b>완도회센터</b></td><td class="l">활어회 직접</td><td>가성비</td></tr>
+<tr><td class="l"><b>모래뜰</b></td><td class="l">완도한상</td><td>가족</td></tr>
+<tr><td class="l"><b>동서지간</b></td><td class="l">전복 코스</td><td>전복만끽</td></tr></table></div>
+
+<div class="cd"><h3>📞 비상 연락처</h3><ul style="font-size:12px">
+<li>구계등야영장: <a href="tel:061-554-2230">061-554-2230</a></li>
+<li>완도항: <a href="tel:061-552-9385">061-552-9385</a></li>
+<li>청산농협선박: <a href="tel:061-552-9388">061-552-9388</a></li>
+<li>완도관광: <a href="tel:061-550-5151">061-550-5151</a></li>
+<li>대흥사: <a href="tel:061-534-5502">061-534-5502</a></li></ul></div>
+</div>
+
+<!-- BOTTOM TAB -->
+<div class="bt">
+<button class="tb on" id="t0" onclick="go('overview')"><span class="ti">🏠</span>전체</button>
+<button class="tb" id="t1" onclick="go('d1')"><span class="ti">1️⃣</span>Day1</button>
+<button class="tb" id="t2" onclick="go('d2')"><span class="ti">2️⃣</span>Day2</button>
+<button class="tb" id="t3" onclick="go('d3')"><span class="ti">3️⃣</span>Day3</button>
+<button class="tb" id="t4" onclick="go('d4')"><span class="ti">4️⃣</span>Day4</button>
+<button class="tb" id="t5" onclick="go('d5')"><span class="ti">5️⃣</span>Day5</button>
+<button class="tb" id="t6" onclick="go('info')"><span class="ti">📋</span>정보</button>
+</div>
+
+<script>
+const M={overview:'t0',d1:'t1',d2:'t2',d3:'t3',d4:'t4',d5:'t5',info:'t6'};
+function go(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('pg-'+id).classList.add('active');
+document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+document.getElementById(M[id]).classList.add('on');
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
